@@ -1,18 +1,15 @@
 import { Search } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Track scroll for navbar styling
-  useEffect(() => {
-    const handleScroll = () => {
+  if (typeof window !== "undefined") {
+    window.addEventListener("scroll", () => {
       setIsScrolled(window.scrollY > 20);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    });
+  }
 
   return (
     <nav
