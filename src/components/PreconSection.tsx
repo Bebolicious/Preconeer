@@ -86,18 +86,12 @@ const PreconSection = () => {
         {/* Color Filter Pills */}
         <div className="mt-16 flex flex-wrap justify-center gap-3">
           <span className="text-muted-foreground text-sm font-medium self-center">Filter by color:</span>
-          {[
-            { name: "White", color: "bg-yellow-100 hover:bg-yellow-200 text-yellow-900" },
-            { name: "Blue", color: "bg-blue-500 hover:bg-blue-600 text-white" },
-            { name: "Black", color: "bg-gray-900 hover:bg-gray-800 text-white" },
-            { name: "Red", color: "bg-red-600 hover:bg-red-700 text-white" },
-            { name: "Green", color: "bg-green-600 hover:bg-green-700 text-white" },
-          ].map((colorFilter) => (
+          {["White", "Blue", "Black", "Red", "Green"].map((colorFilter) => (
             <button
-              key={colorFilter.name}
-              className={`px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 shadow-md hover:shadow-lg ${colorFilter.color}`}
+              key={colorFilter}
+              className="px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 bg-primary/10 hover:bg-primary/20 text-primary border border-primary/20"
             >
-              {colorFilter.name}
+              {colorFilter}
             </button>
           ))}
         </div>
