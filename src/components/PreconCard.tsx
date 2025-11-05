@@ -1,4 +1,7 @@
+import { Link } from "react-router-dom";
+
 interface PreconCardProps {
+  id: string;
   name: string;
   colors: string;
   image: string;
@@ -6,9 +9,9 @@ interface PreconCardProps {
   theme: string;
 }
 
-const PreconCard = ({ name, colors, image, year, theme }: PreconCardProps) => {
+const PreconCard = ({ id, name, colors, image, year, theme }: PreconCardProps) => {
   return (
-    <div className="group relative">
+    <Link to={`/precon/${id}`} className="group relative block">
       <div className="absolute -inset-1 bg-gradient-to-r from-primary to-secondary rounded-2xl blur opacity-0 group-hover:opacity-25 transition duration-500"></div>
       
       <div className="relative bg-card rounded-2xl overflow-hidden border border-border card-glow">
@@ -40,16 +43,16 @@ const PreconCard = ({ name, colors, image, year, theme }: PreconCardProps) => {
           </p>
 
           <div className="pt-2 flex gap-2">
-            <button className="flex-1 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors text-sm font-medium">
+            <span className="flex-1 px-4 py-2 bg-primary/10 hover:bg-primary/20 text-primary rounded-lg transition-colors text-sm font-medium text-center">
               View Upgrades
-            </button>
-            <button className="px-4 py-2 bg-secondary/10 hover:bg-secondary/20 text-secondary rounded-lg transition-colors text-sm font-medium">
+            </span>
+            <span className="px-4 py-2 bg-secondary/10 hover:bg-secondary/20 text-secondary rounded-lg transition-colors text-sm font-medium">
               Details
-            </button>
+            </span>
           </div>
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

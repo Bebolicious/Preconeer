@@ -1,54 +1,5 @@
 import PreconCard from "./PreconCard";
-import cardRed from "@/assets/card-red.png";
-import cardBlue from "@/assets/card-blue.png";
-import cardGreen from "@/assets/card-green.png";
-import cardWhite from "@/assets/card-white.png";
-import cardBlack from "@/assets/card-black.png";
-
-const preconDecks = [
-  {
-    name: "Draconic Rage",
-    colors: "R/G",
-    image: cardRed,
-    year: "2021",
-    theme: "Dragon tribal with ramp and powerful finishers",
-  },
-  {
-    name: "Lorehold Legacies",
-    colors: "R/W",
-    image: cardWhite,
-    year: "2021",
-    theme: "Graveyard recursion and artifact synergies",
-  },
-  {
-    name: "Quantum Quandrix",
-    colors: "U/G",
-    image: cardBlue,
-    year: "2021",
-    theme: "Math-based magic with +1/+1 counters",
-  },
-  {
-    name: "Silverquill Statement",
-    colors: "W/B",
-    image: cardBlack,
-    year: "2021",
-    theme: "Political control with lifegain matters",
-  },
-  {
-    name: "Witherbloom Witchcraft",
-    colors: "B/G",
-    image: cardGreen,
-    year: "2021",
-    theme: "Life manipulation and sacrifice strategies",
-  },
-  {
-    name: "Prismari Performance",
-    colors: "U/R",
-    image: cardRed,
-    year: "2021",
-    theme: "Instant and sorcery spellslinger",
-  },
-];
+import { preconDecks } from "@/data/precons";
 
 const PreconSection = () => {
   return (
