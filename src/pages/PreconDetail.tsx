@@ -6,7 +6,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { ArrowLeft, Folder } from "lucide-react";
+import { ArrowLeft, Folder, Sparkles } from "lucide-react";
 
 // Mock data - will be replaced with real data later
 const mockUpgradeCards = [
@@ -131,7 +131,10 @@ const PreconDetail = () => {
                   <TabsTrigger value="packs">Packs</TabsTrigger>
                   <Tooltip>
                     <TooltipTrigger asChild>
-                      <TabsTrigger value="beautify">Beautify</TabsTrigger>
+                      <TabsTrigger value="beautify" className="relative">
+                        Beautify
+                        <Sparkles className="absolute -top-1 -right-1 w-3 h-3 text-transparent bg-gradient-to-r from-red-500 via-yellow-500 to-purple-500 bg-clip-text" style={{ filter: 'drop-shadow(0 0 2px rgba(255,215,0,0.5))' }} />
+                      </TabsTrigger>
                     </TooltipTrigger>
                     <TooltipContent>
                       <p>Make your deck fabulous</p>
