@@ -135,6 +135,7 @@ const AddCards = () => {
         id: addedCard.id,
         scryfall_id: selectedCard.id,
         ammount: 1,
+        type: ''
       });
 
       toast({
