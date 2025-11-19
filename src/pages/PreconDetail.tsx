@@ -1,4 +1,5 @@
 import { useParams, Link } from "react-router-dom";
+import { useQuery } from "@tanstack/react-query";
 import { preconDecks } from "@/data/precons";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -7,6 +8,8 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { ArrowLeft, Folder, Sparkles } from "lucide-react";
+import { cardsApi } from "@/lib/api/cards";
+import { DeckCardsSection } from "@/components/DeckCardsSection";
 
 // Mock data - will be replaced with real data later
 const mockUpgradeCards = [
@@ -39,6 +42,13 @@ const mockBeautifyCards = [
 const PreconDetail = () => {
   const { id } = useParams<{ id: string }>();
   const precon = preconDecks.find((deck) => deck.id === id);
+  
+  // Fetch deck cards from database
+  const { data: deckCards = [], isLoading: isLoadingCards } = useQuery({
+    queryKey: ['deck-cards', id],
+    queryFn: () => cardsApi.fetchAllCards(),
+    enabled: !!id,
+  });
 
   if (!precon) {
     return (
@@ -102,13 +112,13 @@ const PreconDetail = () => {
                 All cards included in this preconstructed deck
               </p>
             </div>
-            <div className="min-h-[400px] border-2 border-dashed border-border rounded-xl bg-card/30 flex items-center justify-center">
-              <p className="text-muted-foreground text-center">
-                Card data will be displayed here
-                <br />
-                <span className="text-sm">(Grid of deck cards)</span>
-              </p>
-            </div>
+            {isLoadingCards ? (
+              <div className="min-h-[400px] border-2 border-dashed border-border rounded-xl bg-card/30 flex items-center justify-center">
+                <p className="text-muted-foreground">Loading cards...</p>
+              </div>
+            ) : (
+              <DeckCardsSection cards={deckCards} />
+            )}
           </div>
 
           {/* Potential Upgrades Section */}
