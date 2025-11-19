@@ -10,6 +10,7 @@ export type Precon = {
     id: number;
     scryfall_id: string;
     ammount: number;
+    type: string;
   }>;
   reworks: any[];
   released_year: number;
